@@ -1,0 +1,20 @@
+# Generated wiki clones and dump outputs - not source, regenerate anytime
+wiki-clones/
+*-wiki.json
+ 
+# Org-wide convention: real credentials/config are gitignored, .example templates are committed
+*.local.py
+*.local.json
+ 
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+build/
+dist/
+ 
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
