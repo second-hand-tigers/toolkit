@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "toolkit"
+version = "0.1.0"
+description = "Public toolkit collection for Second Hand Tigers educational infrastructure - reusable command-line tools for students and educators setting up similar sites/orgs. Currently includes wiki_toolkit (GitHub wiki export)."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [
+    { name = "Second Hand Tigers" }
+]
+
+[project.scripts]
+wiki-dump = "wiki_toolkit.dump:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
