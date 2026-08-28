@@ -87,10 +87,12 @@ a time.
 ```
 toolkit/
 ├── README.md
-├── LICENSE
-├── pyproject.toml        # src-layout; setuptools auto-discovers new packages under src/
+├── LICENSE                    # MIT
+├── .gitignore                 # wiki-clones/, *.json outputs, __pycache__/, etc.
+├── pyproject.toml             # src-layout; setuptools auto-discovers new packages under src/
+├── Fix_unicode_hyphens.py     # one-off cleanup script, see below
 ├── test/
-│   └── test_dump.py
+│   └── dump_test.py
 └── src/
     └── wiki_toolkit/
         ├── __init__.py
@@ -103,12 +105,38 @@ Plain `assert`-based scripts, no test-framework dependency — consistent
 with the rest of this repo's dependency-light approach:
 
 ```bash
-python test/test_dump.py
+python test/dump_test.py
 ```
 
 `wiki_toolkit`'s test suite exercises the real `dump_wiki()` logic against a
 throwaway local git repo standing in for a wiki, so it needs no network
 access and never touches a real GitHub wiki.
+
+## Utility scripts
+
+**`Fix_unicode_hyphens.py`** — a standalone cleanup script for a specific
+class of bug: smart-punctuation tools (e.g. a PowerPoint→markdown export
+pipeline) sometimes substitute the Unicode HYPHEN (U+2010) for a plain
+ASCII hyphen (`-`, U+002D) in page titles. The two are visually
+indistinguishable in almost any font, but GitHub wiki page matching is
+exact on the slug, so a link typed with an ordinary hyphen 404s against a
+filename that secretly contains U+2010.
+
+Run it against a local wiki clone (e.g. the one `wiki-dump` leaves under
+`wiki-clones/`):
+
+1. Rewrites all `.md` file **contents**, replacing any U+2010 with `-`
+   (fixes internal links first).
+2. Renames any **filenames** containing U+2010 via `git mv`, so git history
+   and blame are preserved.
+3. Leaves `git add` / `commit` / `push` to you, so you can review the diff
+   before it goes live.
+
+Not installed as a console script — run it directly with
+`python Fix_unicode_hyphens.py <path-to-wiki-clone>`, review with
+`git status`/`git diff` inside that clone, then commit and push from there.
+Re-run `wiki-dump` afterward to confirm no U+2010 remains anywhere in the
+dump.
 
 ## Adding a new toolkit
 
