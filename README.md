@@ -2,7 +2,6 @@ _[← Learning Hub](https://github.com/second-hand-tigers)_<br>
 _[Toggle to Page View](https://second-hand-tigers.github.io/toolkit/)_
 
 # toolkit
-# toolkit
 
 Public, reusable command-line toolkits for running a Second Hand Tigers–style
 educational GitHub org. Clone it, take what you need, reuse it on your own
