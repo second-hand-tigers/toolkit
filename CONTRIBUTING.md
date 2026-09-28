@@ -16,6 +16,8 @@ By contributing anything to this repository or any part of it, you agree that th
 
 Some repositories belong to an individual author, such as `<username>-career-learnings`. In those, the repository's own `LICENSE` file and page footers govern. Do not add your pages to another author's repository unless you have agreed to it with them.
 
+**Copyright year notices.** A repository's `LICENSE` file shows the year it was first published, extended to a range (e.g. “2026–2028”) only when that repository receives a substantive content update in a later year. Years with no changes are skipped, not filled in — the range reflects when work was actually done, not a maintenance schedule. A repository that never changes again keeps its original single year indefinitely; that's expected, not an oversight.
+
 ## Confirm before you submit
 
 - **It is yours to license.** You wrote it, or you have the right to share it under the license above.
